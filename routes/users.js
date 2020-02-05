@@ -8,8 +8,6 @@ const mongoOptions = {
 
 /* GET all users. */
 router.get('/', async function(req, res, next) {
-  console.log("DB URL is ===> " + process.env.DB_URL);
-  console.log("DB NAME is ===> " + process.env.DB_NAME);
   const client = await MongoClient.connect(process.env.DB_URL, mongoOptions);
   const db = client.db(process.env.DB_NAME);
   const users = await db.collection('users').find({}).toArray();
