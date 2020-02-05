@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
+const userSchema = require('./schema/userSchema.js')
 const mongoOptions = { 
   useNewUrlParser: true, 
   useUnifiedTopology: true,
@@ -14,6 +16,21 @@ router.get('/', async function(req, res, next) {
 
   res.send(users)
   client.close();
+});
+
+/* Post user */
+router.post('/', async (req, res, next) => {
+  mongoose.connect(process.env.DB_URL, mongoOptions);
+  const User = mongoose.model("User", userSchema, 'users');
+  const instance = new User({
+    _id: mongoose.Types.ObjectId(),
+    userId: 2,
+    userName: "test",
+  });
+  
+  await instance.save();
+  res.sendStatus(201);
+  mongoose.connection.close();
 });
 
 /* GET a specific user. */
