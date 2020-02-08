@@ -14,7 +14,7 @@ const classeSchema = new Schema({
     classeWeapons: String,
     classeSkills: String,
     classeSpecialization: String,
-    classeCompetence: String,
+    classeCompetences: String,
 
 });
 
