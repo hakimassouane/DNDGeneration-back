@@ -18,6 +18,18 @@ router.get('/', async function(req, res, next) {
   client.close();
 });
 
+/* GET a specific user. */
+router.get('/:userId', async function(req, res, next) {
+  const client = await MongoClient.connect(process.env.DB_URL, mongoOptions);
+  const db = client.db(process.env.DB_NAME);
+  const user = await db.collection('users').findOne({
+    userId: req.params.userId
+  });
+  
+  res.send(user)
+  client.close();
+});
+
 /* Post user */
 router.post('/', async (req, res, next) => {
   mongoose.connect(process.env.DB_URL, mongoOptions);
@@ -31,18 +43,6 @@ router.post('/', async (req, res, next) => {
   await instance.save();
   res.sendStatus(201);
   mongoose.connection.close();
-});
-
-/* GET a specific user. */
-router.get('/:userId', async function(req, res, next) {
-  const client = await MongoClient.connect(process.env.DB_URL, mongoOptions);
-  const db = client.db(process.env.DB_NAME);
-  const user = await db.collection('users').findOne({
-    userId: req.params.userId
-  });
-  
-  res.send(user)
-  client.close();
 });
 
 module.exports = router;
