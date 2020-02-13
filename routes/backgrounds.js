@@ -12,7 +12,7 @@ const mongoOptions = {
 router.get('/', async function(req, res, next) {
   const client = await MongoClient.connect(process.env.DB_URL, mongoOptions);
   const db = client.db(process.env.DB_NAME);
-  const backgrounds = await db.collection('backgrounds').find({}).toArray();
+  const backgrounds = await db.collection('backgrounds').find({}).sort({ name: 1}).toArray();
 
   res.send(backgrounds)
   client.close();
