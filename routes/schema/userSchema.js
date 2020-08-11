@@ -4,8 +4,9 @@ const ObjectId = Schema.ObjectId;
 
 const userSchema = new Schema({
     _id: ObjectId,
-    userId: Number,
     userName: String,
+    userEmail: String,
+    userPassword: String
 });
 
 module.exports = userSchema;

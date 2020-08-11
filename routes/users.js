@@ -36,8 +36,9 @@ router.post('/', async (req, res, next) => {
   const User = mongoose.model("User", userSchema, 'users');
   const instance = new User({
     _id: mongoose.Types.ObjectId(),
-    userId: 2,
-    userName: "test",
+    userName: req.body.name,
+    userEmail: req.body.email,
+    userPassword: req.body.password
   });
   
   await instance.save();
