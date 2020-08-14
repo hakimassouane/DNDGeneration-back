@@ -2,11 +2,14 @@ const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
-const userSchema = require('./schema/userSchema.js')
+const userSchema = require('../schema/userSchema.js');
+const bcrypt = require('bcrypt');
 const mongoOptions = { 
   useNewUrlParser: true, 
   useUnifiedTopology: true,
 };
+
+const userController = require('../controllers/users.controllers');
 
 /* GET all users. */
 router.get('/', async function(req, res, next) {
@@ -30,20 +33,10 @@ router.get('/:userId', async function(req, res, next) {
   client.close();
 });
 
-/* Post user */
-router.post('/', async (req, res, next) => {
-  mongoose.connect(process.env.DB_URL, mongoOptions);
-  const User = mongoose.model("User", userSchema, 'users');
-  const instance = new User({
-    _id: mongoose.Types.ObjectId(),
-    userName: req.body.name,
-    userEmail: req.body.email,
-    userPassword: req.body.password
-  });
-  
-  await instance.save();
-  res.sendStatus(201);
-  mongoose.connection.close();
-});
+/* Post user (create user) */
+
+router.route('/login').post(userController.logUser)
+router.route('/register').post(userController.createUser);
+
 
 module.exports = router;

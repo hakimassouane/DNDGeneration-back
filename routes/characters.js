@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
-const characterSchema = require('./schema/characterSchema.js')
+const characterSchema = require('../schema/characterSchema.js')
 const mongoOptions = { 
   useNewUrlParser: true, 
   useUnifiedTopology: true,
