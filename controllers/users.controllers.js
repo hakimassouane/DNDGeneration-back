@@ -65,6 +65,30 @@ exports.logUser = async function(req, res){
     }
 }
 
+exports.getAllUsers = async function(req, res){
+    try {
+        const db =  await getDb();
+        const users = await db.collection('users').find({}).toArray();
+        res.send(users)
+        closeConnection();
+    } catch(e){
+        return  e;
+    }    
+}
+
+exports.getUser = async function(req , res) {
+    try {
+        const db =  await getDb();
+        const user = await db.collection('users').findOne({
+          userId: req.params.userId
+        });
+        
+        res.send(user)
+        closeConnection();
+    } catch(e) {
+
+    }
+}
 
 async function cryptPassword(password) {
     return await bcrypt.hash(password, Number(process.env.SALT)).then((hash) => hash);
