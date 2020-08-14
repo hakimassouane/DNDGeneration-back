@@ -28,7 +28,6 @@ exports.createUser = async function(req, res){
         await instance.save(err => {
             if(err) {
               res.status(424).send(err);
-              //res.status(424).send('Failed to create user!');
             } else {
               res.status(201).send('The user has been successfully created.');
             }

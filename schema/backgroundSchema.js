@@ -4,8 +4,8 @@ const ObjectId = Schema.ObjectId;
 
 const backgroundSchema = new Schema({
     _id: ObjectId,
-    backgroundrId: Number,
-    backgroundName: String,
+    backgroundId: Number,
+    name: String,
     backgroundSkillProficiencies: String,
     backgroundToolProficiencies: String,
     backgroundEquipment: String,
