@@ -5,7 +5,7 @@ const ObjectId = Schema.ObjectId;
 const itemSchema = new Schema({
     _id: ObjectId,
     itemId: Number,
-    itemName: String,
+    name: String,
     itemType: String,
     itemRarety: String,
     itemWeight: String,
