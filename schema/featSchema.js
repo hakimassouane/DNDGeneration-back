@@ -5,7 +5,7 @@ const ObjectId = Schema.ObjectId;
 const featSchema = new Schema({
     _id: ObjectId,
     featId: Number,
-    featName: String,
+    name: String,
     featPrerequisite: String,
     featDescription: String,
 
