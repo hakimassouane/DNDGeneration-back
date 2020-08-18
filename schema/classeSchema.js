@@ -5,7 +5,7 @@ const ObjectId = Schema.ObjectId;
 const classeSchema = new Schema({
     _id: ObjectId,
     classeId: Number,
-    classeName: String,
+    name: String,
     classeDescription: String,
     classeHitDie: String,
     classePrimaryAbility: String,

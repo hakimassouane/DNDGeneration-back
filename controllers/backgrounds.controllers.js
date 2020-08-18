@@ -24,7 +24,7 @@ exports.getBackground = async function(req , res) {
             backgroundId: req.params.backgroundId
         });
         
-        res.send(user)
+        res.send(background)
         closeConnection();
     } catch(e) {
         return e;
