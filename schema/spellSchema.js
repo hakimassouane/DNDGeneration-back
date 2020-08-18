@@ -5,7 +5,7 @@ const ObjectId = Schema.ObjectId;
 const spellSchema = new Schema({
     _id: ObjectId,
     spellId: Number,
-    spellName: String,
+    name: String,
     spellLevel: Number,
     spellDamage: String,
     spellRange: Number,
