@@ -5,7 +5,7 @@ const ObjectId = Schema.ObjectId;
 const raceSchema = new Schema({
     _id: ObjectId,
     raceId: Number,
-    raceName: String,
+    name: String,
     raceDescription: String,
 });
 
