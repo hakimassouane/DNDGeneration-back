@@ -4,12 +4,13 @@ const ObjectId = Schema.ObjectId;
 
 const backgroundSchema = new Schema({
     _id: ObjectId,
-    backgroundId: Number,
     name: String,
-    backgroundSkillProficiencies: String,
-    backgroundToolProficiencies: String,
-    backgroundEquipment: String,
-    backgroundDescription: String,
+    version: String,
+    skillProficiencies: String,
+    toolProficiencies: String,
+    introduction: String,
+    source: String,
+    page: String
 });
 
 module.exports = backgroundSchema;

@@ -36,12 +36,13 @@ exports.createBackground = async function(req, res){
     const Background = mongoose.model("Background", backgroundSchema, 'backgrounds');
     const instance = new Background({
         _id: mongoose.Types.ObjectId(),
-        backgroundId: 2,
         name: req.body.name,
-        backgroundSkillProficiencies: req.body.skillProficiencies,
-        backgroundToolProficiencies: req.body.toolProficiencies,
-        backgroundEquipment: req.body.equipment,
-        backgroundDescription: req.body.description,
+        version: req.body.version,
+        skillProficiencies: req.body.skillProficiencies,
+        toolProficiencies: req.body.toolProficiencies,
+        introduction: req.body.introduction,
+        source: "Custom",
+        page: "N/A"
     });
 
     const backgroundExist = await checkIfBackgroundExist(req.body.name);
