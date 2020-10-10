@@ -21,7 +21,7 @@ exports.getCharacter = async function(req , res) {
     try {
         const db =  await getDb();
         const character = await db.collection('characters').findOne({
-            characterId: req.params.characterId
+            _id: req.params.characterId
         });
         
         res.send(character)

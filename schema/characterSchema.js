@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const characterSchema = new Schema({
-    _id: ObjectId,
+    //_id: ObjectId,
+    _id: { type: String },
     level: Number,
     xp: Number,
     characterName: String,
