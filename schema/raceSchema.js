@@ -4,9 +4,16 @@ const ObjectId = Schema.ObjectId;
 
 const raceSchema = new Schema({
     _id: ObjectId,
-    raceId: Number,
     name: String,
-    raceDescription: String,
+    size: String,
+    speedWalking: String,
+    speedBurrowing: String,
+    speedClimbing: String,
+    speedFlying: String,
+    speedSwimming: String,
+    description: String,
+    source: String,
+    page: String
 });
 
 module.exports = raceSchema;

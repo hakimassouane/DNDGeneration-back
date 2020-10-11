@@ -36,9 +36,16 @@ exports.createRace = async function(req, res){
     const Race = mongoose.model("Race", raceSchema, 'races');
     const instance = new Race({
         _id: mongoose.Types.ObjectId(),
-        raceId: 1,
-        name: "humain",
-        raceDescription: "String",
+        name: req.body.name,
+        size: req.body.size,
+        speedWalking: req.body.speedWalking,
+        speedBurrowing: req.body.speedBurrowing,
+        speedClimbing: req.body.speedClimbing,
+        speedFlying: req.body.speedFlying,
+        speedSwimming: req.body.speedSwimming,
+        description: req.body.description,
+        source: "Custom",
+        page: "N/A"
     });
 
     const raceExist = await checkIfRaceExist(req.body.name);
