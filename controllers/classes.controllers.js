@@ -36,17 +36,14 @@ exports.createClasse = async function(req, res){
     const Classe = mongoose.model("Classe", classeSchema, 'classes');
     const instance = new Classe({
         _id: mongoose.Types.ObjectId(),
-        classeId: 2,
-        name: "Paladin",
-        classeDescription: "String",
-        classeHitDie: "1d8",
-        classePrimaryAbility: "strenght",
-        classeSaves: "Wisdom",
-        classeArmors: "mall",
-        classeWeapons: "sword",
-        classeSkills: "String",
-        classeSpecialization: "protector",
-        classeCompetences: "heal",
+        name: req.body.name,
+        description: req.body.description,
+        hd: {number: 1, faces: req.body.faces},
+        spellCastingAbility: req.body.spellCastingAbility,
+        canCastSpell: req.body.canCastSpell,
+        spellPrepareType: req.body.spellPrepareType,
+        knowsAllSpell: req.body.knowsAllSpell,
+        source: "Custom",
     });
 
     const classeExist = await checkIfClasseExist(req.body.name);

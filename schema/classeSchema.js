@@ -6,15 +6,13 @@ const classeSchema = new Schema({
     _id: ObjectId,
     classeId: Number,
     name: String,
-    classeDescription: String,
-    classeHitDie: String,
-    classePrimaryAbility: String,
-    classeSaves: String,
-    classeArmors: String,
-    classeWeapons: String,
-    classeSkills: String,
-    classeSpecialization: String,
-    classeCompetences: String,
+    description: String,
+    hd: Object,
+    spellCastingAbility: String,
+    canCastSpell: String,
+    spellPrepareType: String,
+    knowsAllSpell: String,
+    source: String,
 
 });
 
