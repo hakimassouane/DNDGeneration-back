@@ -4,10 +4,10 @@ const ObjectId = Schema.ObjectId;
 
 const featSchema = new Schema({
     _id: ObjectId,
-    featId: Number,
     name: String,
-    featPrerequisite: String,
-    featDescription: String,
+    entries: Array,
+    source: String,
+    page: String
 
 });
 

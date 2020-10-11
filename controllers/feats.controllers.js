@@ -36,10 +36,10 @@ exports.createFeat = async function(req, res){
     const Feat = mongoose.model("Feat", featSchema, 'feats');
     const instance = new Feat({
         _id: mongoose.Types.ObjectId(),
-        featId: 1,
-        name: "Maitrise epee a deux mains",
-        featPrerequisite: "Humain",
-        featDescription: "String",
+        name: req.body.name,
+        entries: [req.body.introduction],
+        source: "Custom",
+        page: "N/A"
     });
 
     const featExist = await checkIfFeatExist(req.body.name);
