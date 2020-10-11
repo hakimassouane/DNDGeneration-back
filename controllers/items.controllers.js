@@ -36,12 +36,20 @@ exports.createItem = async function(req, res){
     const Item = mongoose.model("Item", itemSchema, 'items');
     const instance = new Item({
         _id: mongoose.Types.ObjectId(),
-        itemId: 1,
-        name: "Potion",
-        itemType: "Potion",
-        itemRarety: "commun",
-        itemWeight: "0.5g",
-        itemDescription: "String",
+        name: req.body.name,
+        type: "$",
+        rarity: req.body.rarity,
+        baseItemType: req.body.baseItemType,
+        magicItemType: req.body.magicItemType,
+        baseArmor: req.body.baseArmor,
+        dexBonus: req.body.dexBonus,
+        strRequirement: req.body.strRequirement,
+        stealthCheck: req.body.stealthCheck,
+        baseWeapon: req.body.baseWeapon,
+        attunementDesc: req.body.attunementDesc,
+        entries: [req.body.description],
+        source: "Custom"
+
     });
 
     const itemExist = await checkIfItemExist(req.body.name);
