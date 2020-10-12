@@ -36,15 +36,23 @@ exports.createSpell = async function(req, res){
     const Spell = mongoose.model("Spell", spellSchema, 'spells');
     const instance = new Spell({
         _id: mongoose.Types.ObjectId(),
-        spellId: 2,
-        name: "test",
-        spellLevel: 1,
-        spellDamage: "1d8",
-        spellRange: 7,
-        spellCastingTime: "instanst",
-        spellDuration: "1m",
-        spellComponent: "V",
-        spellDescription: "String",
+        name: req.body.name,
+        level: req.body.level,
+        school: req.body.school,
+        castingTime: req.body.castingTime,
+        castingTimeType: req.body.castingTimeType,
+        reactionCastingTimeDesc: req.body.reactionCastingTimeDesc,
+        materialComponentsDesc: req.body.materialComponentsDesc,
+        spellRangeType: req.body.spellRangeType,
+        rangeDistance: req.body.rangeDistance,
+        durationType: req.body.durationType,
+        duration: req.body.duration,
+        durationTime: req.body.durationTime,
+        levelScalingType: req.body.levelScalingType,
+        availbleForClasse: req.body.availbleForClasse,
+        description: req.body.description,
+        source: "Custom",
+        page: "N/A"
     });
 
     const spellExist = await checkIfSpellExist(req.body.name);
