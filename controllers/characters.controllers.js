@@ -64,12 +64,12 @@ exports.createCharacter = async function(req, res){
         armorName: req.body.armorName
       });
 
-    const characterExist = await checkIfCharacterExist(req.body.characterName);
+    /*const characterExist = await checkIfCharacterExist(req.body.characterName);
     if (characterExist) {
         closeConnection();
         res.json({error: "Character already exist!"});
         
-    } else {
+    } else {*/
         await instance.save(err => {
             if(err) {
               res.status(424).send(err);
@@ -78,7 +78,7 @@ exports.createCharacter = async function(req, res){
             }
               closeConnection();
         });
-    }
+    //}
 }
 
 async function checkIfCharacterExist(name) {
